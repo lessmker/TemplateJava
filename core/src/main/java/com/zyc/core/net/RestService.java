@@ -16,6 +16,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.QueryMap;
+import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
 /**
@@ -52,6 +53,7 @@ public interface RestService {
     Call<String> delete(@Url String url, @QueryMap Map<String, Object> params);
 
     //下载请求接口
+    @Streaming//边下载，边写入，使用异步方法
     @GET
     Call<ResponseBody> download(@Url String url, @QueryMap Map<String, Object> params);
 

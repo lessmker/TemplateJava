@@ -7,6 +7,7 @@ import com.zyc.core.net.callback.IFailure;
 import com.zyc.core.net.callback.IRequest;
 import com.zyc.core.net.callback.ISuccess;
 import com.zyc.core.net.callback.RequestCallbacks;
+import com.zyc.core.net.download.DownloadHandler;
 import com.zyc.core.ui.loader.AppLoader;
 import com.zyc.core.ui.loader.LoaderStyle;
 
@@ -29,6 +30,9 @@ public class RestClient {
     private final String URL;
     private static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
     private final IRequest REQUEST;
+    private final String DOWNLOAD_DIR;
+    private final String EXTENSION;
+    private final String NAME;
     private final ISuccess SUCCESS;
     private final IFailure FAILURE;
     private final IError ERROR;
@@ -37,11 +41,15 @@ public class RestClient {
     private final File FILE;
     private final Context CONTEEXT;
 
-    public RestClient(String url, WeakHashMap<String, Object> params, IRequest request,
+    public RestClient(String url, WeakHashMap<String, Object> params,
+                      String downloadDir, String extension, String name, IRequest request,
                       ISuccess success, IFailure failure, IError error, RequestBody body,
                       File file, Context context, LoaderStyle loaderStyle) {
         this.URL = url;
         PARAMS.putAll(params);
+        this.DOWNLOAD_DIR = downloadDir;
+        this.EXTENSION = extension;
+        this.NAME = name;
         this.REQUEST = request;
         this.SUCCESS = success;
         this.FAILURE = failure;
@@ -90,8 +98,8 @@ public class RestClient {
                 final RequestBody requestBody = RequestBody.create(
                         MediaType.parse(MultipartBody.FORM.toString()), FILE);
                 final MultipartBody.Part body =
-                        MultipartBody.Part.createFormData("file", FILE.getName(),requestBody);
-                call=RestCreator.getRestSrevice().upload(URL,body);
+                        MultipartBody.Part.createFormData("file", FILE.getName(), requestBody);
+                call = RestCreator.getRestSrevice().upload(URL, body);
                 break;
             default:
                 break;
@@ -133,5 +141,13 @@ public class RestClient {
 
     public final void delete() {
         request(HttpMethod.DELETE);
+    }
+
+    public final void upload() {
+        request(HttpMethod.UPLOAD);
+    }
+
+    public final void download() {
+        new DownloadHandler(URL, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME, SUCCESS, FAILURE, ERROR).handleDownload();
     }
 }

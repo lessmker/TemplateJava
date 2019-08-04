@@ -1,10 +1,14 @@
 package com.zyc.core.app;
 
+import android.os.Handler;
+
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+
+import okhttp3.Interceptor;
 
 /**
  * @Author: zyc
@@ -12,19 +16,22 @@ import java.util.HashMap;
  * @Description: 配置文件的存储以及获取
  */
 public final class Configurator {
-    private static final HashMap<String, Object> APP_CONFIGS = new HashMap<>();
+    private static final HashMap<Object, Object> LATTE_CONFIGS = new HashMap<>();
+    private static final Handler HANDLER = new Handler();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
+    private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
-    public Configurator() {
-        APP_CONFIGS.put(ConfigType.CONFIG_READY.name(), false);
+    private Configurator() {
+        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, false);
+        LATTE_CONFIGS.put(ConfigKeys.HANDLER, HANDLER);
     }
 
-    public static Configurator getInstance() {
+    static Configurator getInstance() {
         return Holder.INSTANCE;
     }
 
-    final HashMap<String, Object> getAppConfigs() {
-        return APP_CONFIGS;
+    final HashMap<Object, Object> getLatteConfigs() {
+        return LATTE_CONFIGS;
     }
 
     private static class Holder {
@@ -33,19 +40,23 @@ public final class Configurator {
 
     public final void configure() {
         initIcons();
-        APP_CONFIGS.put(ConfigType.CONFIG_READY.name(), true);//告诉配置文件配置完成
+        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, true);
     }
 
-    public final Configurator withApiHost(String host) {//配置域名
-        APP_CONFIGS.put(ConfigType.API_HOST.name(), host);
+    public final Configurator withApiHost(String host) {
+        LATTE_CONFIGS.put(ConfigKeys.API_HOST, host);
+        return this;
+    }
+
+    public final Configurator withLoaderDelayed(long delayed) {
+        LATTE_CONFIGS.put(ConfigKeys.LOADER_DELAYED, delayed);
         return this;
     }
 
     private void initIcons() {
-        final int size = ICONS.size();
-        if (size > 0) {
+        if (ICONS.size() > 0) {
             final Iconify.IconifyInitializer initializer = Iconify.with(ICONS.get(0));
-            for (int i = 1; i < size; i++) {
+            for (int i = 1; i < ICONS.size(); i++) {
                 initializer.with(ICONS.get(i));
             }
         }
@@ -56,16 +67,48 @@ public final class Configurator {
         return this;
     }
 
-    private void checkConfiguration() {//判断配置是否完成
-        final boolean isReady = (boolean) APP_CONFIGS.get(ConfigType.CONFIG_READY.name());
+    public final Configurator withInterceptor(Interceptor interceptor) {
+        INTERCEPTORS.add(interceptor);
+        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
+
+    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors) {
+        INTERCEPTORS.addAll(interceptors);
+        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
+        return this;
+    }
+
+    public final Configurator withWeChatAppId(String appId) {
+        LATTE_CONFIGS.put(ConfigKeys.WE_CHAT_APP_ID, appId);
+        return this;
+    }
+
+    public final Configurator withWeChatAppSecret(String appSecret) {
+        LATTE_CONFIGS.put(ConfigKeys.WE_CHAT_APP_SECRET, appSecret);
+        return this;
+    }
+
+    //浏览器加载的HOST
+    public Configurator withWebHost(String host) {
+        LATTE_CONFIGS.put(ConfigKeys.WEB_HOST, host);
+        return this;
+    }
+
+    private void checkConfiguration() {
+        final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigKeys.CONFIG_READY);
         if (!isReady) {
-            throw new RuntimeException("Configuation is not ready,call configure");
+            throw new RuntimeException("Configuration is not ready,call configure");
         }
     }
 
     @SuppressWarnings("unchecked")
-    final <T> T getConfiguration(Enum<ConfigType> key) {
+    final <T> T getConfiguration(Object key) {
         checkConfiguration();
-        return (T) APP_CONFIGS.get(key.name());
+        final Object value = LATTE_CONFIGS.get(key);
+        if (value == null) {
+            throw new NullPointerException(key.toString() + " IS NULL");
+        }
+        return (T) LATTE_CONFIGS.get(key);
     }
 }
