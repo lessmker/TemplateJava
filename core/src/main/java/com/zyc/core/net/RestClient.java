@@ -19,7 +19,6 @@ import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
-import retrofit2.http.Multipart;
 
 /**
  * @Author: zyc
@@ -28,7 +27,7 @@ import retrofit2.http.Multipart;
  */
 public class RestClient {
     private final String URL;
-    private static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
+    private final WeakHashMap<String, Object> PARAMS;
     private final IRequest REQUEST;
     private final String DOWNLOAD_DIR;
     private final String EXTENSION;
@@ -46,7 +45,7 @@ public class RestClient {
                       ISuccess success, IFailure failure, IError error, RequestBody body,
                       File file, Context context, LoaderStyle loaderStyle) {
         this.URL = url;
-        PARAMS.putAll(params);
+        this.PARAMS = params;
         this.DOWNLOAD_DIR = downloadDir;
         this.EXTENSION = extension;
         this.NAME = name;
@@ -65,7 +64,7 @@ public class RestClient {
     }
 
     private void request(HttpMethod method) {
-        final RestService service = RestCreator.getRestSrevice();
+        final RestService service = RestCreator.getRestService();
         Call<String> call = null;
 
         if (REQUEST != null) {
@@ -99,7 +98,7 @@ public class RestClient {
                         MediaType.parse(MultipartBody.FORM.toString()), FILE);
                 final MultipartBody.Part body =
                         MultipartBody.Part.createFormData("file", FILE.getName(), requestBody);
-                call = RestCreator.getRestSrevice().upload(URL, body);
+                call = service.upload(URL, body);
                 break;
             default:
                 break;
@@ -148,6 +147,7 @@ public class RestClient {
     }
 
     public final void download() {
-        new DownloadHandler(URL, REQUEST, DOWNLOAD_DIR, EXTENSION, NAME, SUCCESS, FAILURE, ERROR).handleDownload();
+        new DownloadHandler(URL, PARAMS, REQUEST, DOWNLOAD_DIR, EXTENSION,
+                NAME, SUCCESS, FAILURE, ERROR).handleDownload();
     }
 }

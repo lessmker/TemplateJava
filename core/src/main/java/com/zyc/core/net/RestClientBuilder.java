@@ -21,7 +21,7 @@ import okhttp3.RequestBody;
  */
 public class RestClientBuilder {
     private String mUrl = null;
-    private static final WeakHashMap<String, Object> PARAMS = RestCreator.getParams();
+    private static final WeakHashMap<String, Object> PARAMS = new WeakHashMap<>();
     private String mDownloadDir = null;
     private String mExtension = null;
     private String mName = null;
