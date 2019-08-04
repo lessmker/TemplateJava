@@ -10,11 +10,15 @@ import com.zyc.core.net.callback.RequestCallbacks;
 import com.zyc.core.ui.loader.AppLoader;
 import com.zyc.core.ui.loader.LoaderStyle;
 
+import java.io.File;
 import java.util.WeakHashMap;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
+import retrofit2.http.Multipart;
 
 /**
  * @Author: zyc
@@ -30,11 +34,12 @@ public class RestClient {
     private final IError ERROR;
     private final RequestBody BODY;
     private final LoaderStyle LOADER_STYLE;
+    private final File FILE;
     private final Context CONTEEXT;
 
     public RestClient(String url, WeakHashMap<String, Object> params, IRequest request,
                       ISuccess success, IFailure failure, IError error, RequestBody body,
-                      Context context, LoaderStyle loaderStyle) {
+                      File file, Context context, LoaderStyle loaderStyle) {
         this.URL = url;
         PARAMS.putAll(params);
         this.REQUEST = request;
@@ -43,6 +48,7 @@ public class RestClient {
         this.ERROR = error;
         this.BODY = body;
         this.LOADER_STYLE = loaderStyle;
+        this.FILE = file;
         this.CONTEEXT = context;
     }
 
@@ -67,13 +73,25 @@ public class RestClient {
                 call = service.get(URL, PARAMS);
                 break;
             case POST:
-                call = service.get(URL, PARAMS);
+                call = service.post(URL, PARAMS);
+                break;
+            case POST_RAW://post原始数据
+                call = service.postRaw(URL, BODY);
                 break;
             case PUT:
-                call = service.get(URL, PARAMS);
+                call = service.put(URL, PARAMS);
                 break;
+            case PUT_RAW:
+                call = service.putRaw(URL, BODY);
             case DELETE:
-                call = service.get(URL, PARAMS);
+                call = service.delete(URL, PARAMS);
+                break;
+            case UPLOAD://上传
+                final RequestBody requestBody = RequestBody.create(
+                        MediaType.parse(MultipartBody.FORM.toString()), FILE);
+                final MultipartBody.Part body =
+                        MultipartBody.Part.createFormData("file", FILE.getName(),requestBody);
+                call=RestCreator.getRestSrevice().upload(URL,body);
                 break;
             default:
                 break;
@@ -92,11 +110,25 @@ public class RestClient {
     }
 
     public final void post() {
-        request(HttpMethod.POST);
+        if (BODY == null) {
+            request(HttpMethod.POST);
+        } else {
+            if (!PARAMS.isEmpty()) {
+                throw new RuntimeException("params must be null");
+            }
+            request(HttpMethod.POST_RAW);
+        }
     }
 
     public final void put() {
-        request(HttpMethod.PUT);
+        if (BODY == null) {
+            request(HttpMethod.PUT);
+        } else {
+            if (!PARAMS.isEmpty()) {
+                throw new RuntimeException("params must be null");
+            }
+            request(HttpMethod.PUT_RAW);
+        }
     }
 
     public final void delete() {
