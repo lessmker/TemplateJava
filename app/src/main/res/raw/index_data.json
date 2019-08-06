@@ -1,0 +1,80 @@
+{
+  "code": 0,
+  "message": "OK",
+  "total": 100,
+  "page_size": 6,
+  "data": [
+    {
+      "goodsId": 0,
+      "spanSize": 4,
+      "banners": [
+        "http://d.ifengimg.com/w600/p0.ifengimg.com/pmop/2018/0213/BC9944CA42A0C2A83589795D4657AD6DD758D3D6_size23_w1080_h468.jpeg",
+        "http://www.t-ji.net/tujiJDAwMyQxMy8xNzYwNDQ5MzI1L1RCMk4zUzRYViQ2WHgkNiQ2JDZfISExNzYwNDQ5MzI1JDk.jpg",
+        "http://5b0988e595225.cdn.sohucs.com/images/20180622/00f4ce9dba1844c38eeee2da2fc36fdb.jpeg",
+        "http://g.hiphotos.baidu.com/image/h%3D300/sign=c029a987df09b3def4bfe268fcbe6cd3/5366d0160924ab18014cefd83bfae6cd7a890b82.jpg"
+      ]
+    },
+    {
+      "goodsId": 1,
+      "text": "测试描述1",
+      "imageUrl":"https://b-ssl.duitang.com/uploads/item/201809/03/20180903191104_xfows.jpeg",
+      "spanSize": 4
+    },
+    {
+      "goodsId": 2,
+      "text": "测试描述2",
+      "imageUrl": "https://b-ssl.duitang.com/uploads/item/201805/13/20180513224039_tgfwu.png",
+      "spanSize": 2
+    },
+    {
+      "goodsId": 3,
+      "text": "测试描述3",
+      "imageUrl": "https://img5.duitang.com/uploads/item/201411/29/20141129010249_dh32E.thumb.700_0.jpeg",
+      "spanSize": 2
+    },
+    {
+      "goodsId": 4,
+      "imageUrl": "https://b-ssl.duitang.com/uploads/item/201707/19/20170719211350_4PnBt.jpeg",
+      "spanSize": 2
+    },
+    {
+      "goodsId": 4,
+      "imageUrl": "https://b-ssl.duitang.com/uploads/item/201504/15/20150415H2854_XURW3.jpeg",
+      "spanSize": 2
+    },
+    {
+      "goodsId": 4,
+      "imageUrl": "https://b-ssl.duitang.com/uploads/item/201504/20/20150420H1713_U2WYe.jpeg",
+      "spanSize": 2
+    },
+    {
+      "goodsId": 4,
+      "imageUrl": "https://b-ssl.duitang.com/uploads/item/201707/19/20170719211350_4PnBt.jpeg",
+      "spanSize": 2
+    },
+    {
+      "goodsId": 5,
+      "text": "我是野广告",
+      "imageUrl": "https://b-ssl.duitang.com/uploads/item/201709/30/20170930105123_zmdZC.jpeg",
+      "spanSize": 4
+    },
+    {
+      "goodsId": 5,
+      "text": "测试描述5",
+      "imageUrl": "http://static01.coloros.com/bbs/data/attachment/forum/201312/27/174621xzs8lj9gzi28npu2.jpg",
+      "spanSize": 4
+    },
+    {
+      "goodsId": 5,
+      "text": "测试描述6",
+      "imageUrl": "http://e.hiphotos.baidu.com/image/pic/item/4610b912c8fcc3cef70d70409845d688d53f20f7.jpg",
+      "spanSize": 4
+    },
+    {
+      "goodsId": 5,
+      "text": "我又是野广告",
+      "imageUrl": "https://b-ssl.duitang.com/uploads/item/201707/19/20170719211350_4PnBt.jpeg",
+      "spanSize": 4
+    }
+  ]
+}

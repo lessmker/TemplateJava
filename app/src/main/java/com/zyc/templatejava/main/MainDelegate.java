@@ -1,10 +1,14 @@
 package com.zyc.templatejava.main;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.zyc.core.app.ConfigKeys;
@@ -31,6 +35,9 @@ import io.reactivex.schedulers.Schedulers;
  * @Description: 主测试Delegate
  */
 public class MainDelegate extends AppDelegate {
+
+    final WeakHashMap<String, Object> params = new WeakHashMap<>();
+
     @Override
     public Object setLayout() {
         return R.layout.delegate_main;
@@ -39,11 +46,12 @@ public class MainDelegate extends AppDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
         onCallRxGet();
+//        testRestClient();
     }
 
     private void testRestClient() {
         RestClient.builder()
-                .url("http://127.0.0.1/index")
+                .url("http://127.0.0.1/test")
                 .loader(getContext())
                 .success(new ISuccess() {
                     @Override
@@ -69,68 +77,20 @@ public class MainDelegate extends AppDelegate {
     }
 
     //TODO:RxJava测试方法没啥用
-    void onCallRxGet() {
-        final String url = "index";
-        final WeakHashMap<String, Object> params = new WeakHashMap<>();
-
-        final Observable<String> observable = RestCreator.getRxRestService()
-                .get(url, params);
-        observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<String>() {
-                    @Override
-                    public void onSubscribe(@io.reactivex.annotations.NonNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(@io.reactivex.annotations.NonNull String s) {
-                        Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onError(@io.reactivex.annotations.NonNull Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-    }
-
-    //TODO:测试方法，没啥卵用X2
-    private void onCallRxRestClient() {
-
-
-        final String url = "index";
-        RxRestClient.builder()
-                .url(ConfigKeys.API_HOST + url)
-                .build()
-                .get()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<String>() {
-                    @Override
-                    public void onSubscribe(@io.reactivex.annotations.NonNull Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(@io.reactivex.annotations.NonNull String s) {
-                        Toast.makeText(getContext(), s, Toast.LENGTH_LONG).show();
-                    }
-
-                    @Override
-                    public void onError(@io.reactivex.annotations.NonNull Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
+    @SuppressLint("HandlerLeak")
+    private void onCallRxGet() {
+        test t = new test("test");
+        t.dataHandler = new Handler() {
+            @Override
+            public void handleMessage(@NonNull Message msg) {
+                super.handleMessage(msg);
+                if (msg.arg1 == 0) {
+                    Toast.makeText(getContext(), (String) msg.obj, Toast.LENGTH_LONG).show();
+                } else {
+                    Toast.makeText(getContext(), "网络访问失败", Toast.LENGTH_LONG).show();
+                }
+            }
+        };
+        t.RunDataAsync();
     }
 }

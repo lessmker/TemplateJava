@@ -9,6 +9,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 
 import com.zyc.core.delegates.AppDelegate;
+import com.zyc.core.wechat.AppWeChat;
+import com.zyc.core.wechat.callbacks.IWeChatSignInCallback;
 import com.zyc.templatejava.R;
 import com.zyc.templatejava.R2;
 
@@ -39,6 +41,7 @@ public class SignInDelegate extends AppDelegate {
 
     @OnClick(R2.id.btn_sign_in)
     void onClickSignIn() {//登录
+        //TODO: 这里以后要修改
 //        if (checkForm()) {
         if (true) {
             SignHandler.onSignIn("", mISignListener);
@@ -56,6 +59,12 @@ public class SignInDelegate extends AppDelegate {
 
     @OnClick(R2.id.icon_sign_in_wechat)
     void onClickSignInWeChat() {//微信登录
+        AppWeChat.getInstance().onSignSuccess(new IWeChatSignInCallback() {
+            @Override
+            public void onSignInSuccess(String userInfo) {
+
+            }
+        }).SigIn();
     }
 
 
@@ -72,7 +81,6 @@ public class SignInDelegate extends AppDelegate {
         final String phone = mPhone.getText().toString();
         final String password = mPassword.getText().toString();
         boolean isPass = true;
-
         if (phone.isEmpty() || (phone.length() != 11)) {
             mPhone.setError("手机号码错误");
             isPass = false;

@@ -1,5 +1,6 @@
 package com.zyc.core.utils;
 
+import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 
 /**

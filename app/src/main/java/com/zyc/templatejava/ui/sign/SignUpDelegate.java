@@ -48,6 +48,7 @@ public class SignUpDelegate extends AppDelegate {
 
     @OnClick(R2.id.btn_sign_up)
     void onClickSignUp() {
+        //TODO: 这里以后要修改
 //        if (checkForm()) {
         if (true) {
 //            postSignUp();//上传到服务器
@@ -72,7 +73,7 @@ public class SignUpDelegate extends AppDelegate {
 
     private void postSignUp() {
         RestClient.builder()
-                .url("sign_up")
+                .url("user_profile")
                 .params("", "")
                 .success(new ISuccess() {
                     @Override

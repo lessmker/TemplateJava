@@ -1,0 +1,11 @@
+{
+  "code": 0,
+  "message": "OK",
+  "code": {
+    "userId": 1,
+    "name": "猿",
+    "avatar": "aaaaa",
+    "gender": "男",
+    "address": "山东"
+  }
+}

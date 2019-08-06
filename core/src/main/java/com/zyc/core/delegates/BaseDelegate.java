@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
@@ -25,6 +26,7 @@ public abstract class BaseDelegate extends SwipeBackFragment {
 
     @SuppressWarnings("SpellCheckingInspection")
     private Unbinder mUnbinder = null;
+    private View mRootView = null;
 
     public abstract Object setLayout();
 
@@ -45,7 +47,15 @@ public abstract class BaseDelegate extends SwipeBackFragment {
             mUnbinder = ButterKnife.bind(this, rootView);
             onBindView(savedInstanceState, rootView);
         }
+        mRootView = rootView;
         return rootView;
+    }
+
+    public <T extends View> T $(@IdRes int viewId) {
+        if (mRootView != null) {
+            return mRootView.findViewById(viewId);
+        }
+        throw new NullPointerException("rootView is null");
     }
 
     public final ProxyActivity getProxyActivity() {

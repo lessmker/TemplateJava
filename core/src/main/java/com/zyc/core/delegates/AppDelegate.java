@@ -6,4 +6,9 @@ package com.zyc.core.delegates;
  * @Description: 正式的Delegate
  */
 public abstract class AppDelegate extends PermissionCheckerDelegate {
+
+    @SuppressWarnings("unchecked")
+    public <T extends AppDelegate> T getParentDelegate() {
+        return (T) getParentFragment();
+    }
 }

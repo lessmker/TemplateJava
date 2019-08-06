@@ -58,24 +58,23 @@ public class LauncherDelegate extends AppDelegate implements ITimerListener {
 
     //判断是否展示滑动演示页
     private void checkIsShowScroll() {
-        if (!AppPreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
-            startWithPop(new LauncherScrollDelegate());
-        } else {//检查用户是否已经登录APP
-            AccountManager.checkAccount(new IUserChecker() {
-                @Override
-                public void onSignIn() {
-                    if (mILauncherListener != null) {
+        if (mILauncherListener != null) {
+            if (!AppPreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
+//            start(new LauncherScrollDelegate(), SINGLETASK);
+                mILauncherListener.onLauncherFinish(OnLauncherFinishTag.LANUNCHERON);
+            } else {//检查用户是否已经登录APP
+                AccountManager.checkAccount(new IUserChecker() {
+                    @Override
+                    public void onSignIn() {
                         mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
                     }
-                }
 
-                @Override
-                public void onNotSignIn() {
-                    if (mILauncherListener != null) {
+                    @Override
+                    public void onNotSignIn() {
                         mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
                     }
-                }
-            });
+                });
+            }
         }
     }
 
