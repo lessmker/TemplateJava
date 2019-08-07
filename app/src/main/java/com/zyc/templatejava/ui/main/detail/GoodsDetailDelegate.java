@@ -5,7 +5,7 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
-import com.zyc.core.delegates.AppDelegate;
+import com.zyc.core.delegates.KerDelegate;
 import com.zyc.templatejava.R;
 
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
@@ -16,7 +16,7 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
  * @CreateDate: 2019/8/6 22:37
  * @Description: 商品详细页面
  */
-public class GoodsDetailDelegate extends AppDelegate {
+public class GoodsDetailDelegate extends KerDelegate {
     public static GoodsDetailDelegate create() {
         return new GoodsDetailDelegate();
     }

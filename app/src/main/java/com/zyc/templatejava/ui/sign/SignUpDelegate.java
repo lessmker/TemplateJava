@@ -4,12 +4,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
 import com.google.android.material.textfield.TextInputEditText;
-import com.zyc.core.delegates.AppDelegate;
+import com.zyc.core.delegates.KerDelegate;
 import com.zyc.core.net.RestClient;
 import com.zyc.core.net.callback.ISuccess;
 import com.zyc.templatejava.R;
@@ -23,7 +22,7 @@ import butterknife.OnClick;
  * @CreateDate: 2019/8/4 20:09
  * @Description: 注册界面
  */
-public class SignUpDelegate extends AppDelegate {
+public class SignUpDelegate extends KerDelegate {
 
     @BindView(R2.id.edit_sign_up_name)
     TextInputEditText mName = null;

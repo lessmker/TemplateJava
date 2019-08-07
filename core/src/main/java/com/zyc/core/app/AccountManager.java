@@ -1,6 +1,6 @@
 package com.zyc.core.app;
 
-import com.zyc.core.utils.AppPreference;
+import com.zyc.core.utils.KerPreference;
 
 /**
  * @Author: zyc
@@ -14,11 +14,11 @@ public class AccountManager {
 
     //保存用户登录状态，登录后调用
     public static void setSignState(boolean state) {
-        AppPreference.setAppFlag(SignTag.SIGN_TAG.name(), state);
+        KerPreference.setAppFlag(SignTag.SIGN_TAG.name(), state);
     }
 
     private static boolean isSignIn() {
-        return AppPreference.getAppFlag(SignTag.SIGN_TAG.name());
+        return KerPreference.getAppFlag(SignTag.SIGN_TAG.name());
     }
 
     public static void checkAccount(IUserChecker checker) {

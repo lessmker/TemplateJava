@@ -6,8 +6,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import com.zyc.core.activities.ProxyActivity;
-import com.zyc.core.app.App;
-import com.zyc.core.delegates.AppDelegate;
+import com.zyc.core.app.Ker;
+import com.zyc.core.delegates.IPageLoadListener;
+import com.zyc.core.delegates.KerDelegate;
 import com.zyc.core.ui.launcher.ILauncherListener;
 import com.zyc.core.ui.launcher.OnLauncherFinishTag;
 import com.zyc.templatejava.ui.launcher.LauncherDelegate;
@@ -25,7 +26,7 @@ public class MainActivity extends ProxyActivity implements
         ISignListener, ILauncherListener {
 
     @Override
-    public AppDelegate setRootDelegate() {
+    public KerDelegate setRootDelegate() {
         return new LauncherDelegate();
     }
 
@@ -33,7 +34,7 @@ public class MainActivity extends ProxyActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initWindows();
-        App.getConfigurator().withActivity(this);
+        Ker.getConfigurator().withActivity(this);
         StatusBarCompat.translucentStatusBar(this, true);
     }
 

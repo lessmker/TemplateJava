@@ -4,13 +4,7 @@ import android.content.Context;
 
 import com.zyc.core.net.HttpMethod;
 import com.zyc.core.net.RestCreator;
-import com.zyc.core.net.callback.IError;
-import com.zyc.core.net.callback.IFailure;
-import com.zyc.core.net.callback.IRequest;
-import com.zyc.core.net.callback.ISuccess;
-import com.zyc.core.net.callback.RequestCallbacks;
-import com.zyc.core.net.download.DownloadHandler;
-import com.zyc.core.ui.loader.AppLoader;
+import com.zyc.core.ui.loader.KerLoader;
 import com.zyc.core.ui.loader.LoaderStyle;
 
 import java.io.File;
@@ -21,7 +15,6 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 import okhttp3.ResponseBody;
-import retrofit2.Callback;
 
 /**
  * @Author: zyc
@@ -55,7 +48,7 @@ public class RxRestClient {
         Observable<String> observable = null;
 
         if (LOADER_STYLE != null) {
-            AppLoader.showLoading(CONTEEXT, LOADER_STYLE);
+            KerLoader.showLoading(CONTEEXT, LOADER_STYLE);
         }
 
         switch (method) {

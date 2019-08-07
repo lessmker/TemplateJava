@@ -14,7 +14,7 @@ import androidx.appcompat.widget.LinearLayoutCompat;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.zyc.core.R;
 import com.zyc.core.R2;
-import com.zyc.core.delegates.AppDelegate;
+import com.zyc.core.delegates.KerDelegate;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -28,7 +28,7 @@ import me.yokeyword.fragmentation.ISupportFragment;
  * @CreateDate: 2019/8/6 16:12
  * @Description: 底层Bottom的抽象框架
  */
-public abstract class BaseBottomDelegate extends AppDelegate implements
+public abstract class BaseBottomDelegate extends KerDelegate implements
         View.OnClickListener {
     private final ArrayList<BottomItemDelegate> ITEM_DELEGATES = new ArrayList<>();
     private final ArrayList<BottomTabBean> TAB_BEANS = new ArrayList<>();

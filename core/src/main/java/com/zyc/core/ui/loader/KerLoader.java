@@ -19,7 +19,7 @@ import java.util.ArrayList;
  * @CreateDate: 2019/8/4 13:00
  * @Description:
  */
-public class AppLoader {
+public class KerLoader {
 
     //设置屏占比,可以根据屏幕的大小自动调整
     private static final int LOADER_SIZE_SCALE = 8;

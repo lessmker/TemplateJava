@@ -1,0 +1,68 @@
+{
+  "code": 0,
+  "message": "OK",
+  "data": [
+    {
+      "id": 1,
+      "section": "标题一",
+      "goods": [
+        {
+          "goods_id": 3,
+          "goods_thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565118592736&di=3d0311c179a204de22c98a439706a724&imgtype=0&src=http%3A%2F%2Fimg2.99114.com%2Fgroup1%2FM00%2F61%2FC3%2FwKgGSFnDdF2AIk2lAAFUhrLNs8A450.jpg",
+          "goods_name": "品牌一"
+        },
+        {
+          "goods_id": 4,
+          "goods_thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565118592736&di=3d0311c179a204de22c98a439706a724&imgtype=0&src=http%3A%2F%2Fimg2.99114.com%2Fgroup1%2FM00%2F61%2FC3%2FwKgGSFnDdF2AIk2lAAFUhrLNs8A450.jpg",
+          "goods_name": "品牌二"
+        },
+        {
+          "goods_id": 5,
+          "goods_thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565118592736&di=3d0311c179a204de22c98a439706a724&imgtype=0&src=http%3A%2F%2Fimg2.99114.com%2Fgroup1%2FM00%2F61%2FC3%2FwKgGSFnDdF2AIk2lAAFUhrLNs8A450.jpg",
+          "goods_name": "品牌三"
+        },
+        {
+          "goods_id": 6,
+          "goods_thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565118592736&di=3d0311c179a204de22c98a439706a724&imgtype=0&src=http%3A%2F%2Fimg2.99114.com%2Fgroup1%2FM00%2F61%2FC3%2FwKgGSFnDdF2AIk2lAAFUhrLNs8A450.jpg",
+          "goods_name": "品牌四"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "section": "标题二",
+      "goods": [
+        {
+          "goods_id": 3,
+          "goods_thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565118592736&di=3d0311c179a204de22c98a439706a724&imgtype=0&src=http%3A%2F%2Fimg2.99114.com%2Fgroup1%2FM00%2F61%2FC3%2FwKgGSFnDdF2AIk2lAAFUhrLNs8A450.jpg",
+          "goods_name": "品牌一"
+        },
+        {
+          "goods_id": 4,
+          "goods_thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565118592736&di=3d0311c179a204de22c98a439706a724&imgtype=0&src=http%3A%2F%2Fimg2.99114.com%2Fgroup1%2FM00%2F61%2FC3%2FwKgGSFnDdF2AIk2lAAFUhrLNs8A450.jpg",
+          "goods_name": "品牌二"
+        },
+        {
+          "goods_id": 5,
+          "goods_thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565118592736&di=3d0311c179a204de22c98a439706a724&imgtype=0&src=http%3A%2F%2Fimg2.99114.com%2Fgroup1%2FM00%2F61%2FC3%2FwKgGSFnDdF2AIk2lAAFUhrLNs8A450.jpg",
+          "goods_name": "品牌三"
+        },
+        {
+          "goods_id": 6,
+          "goods_thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565118592736&di=3d0311c179a204de22c98a439706a724&imgtype=0&src=http%3A%2F%2Fimg2.99114.com%2Fgroup1%2FM00%2F61%2FC3%2FwKgGSFnDdF2AIk2lAAFUhrLNs8A450.jpg",
+          "goods_name": "品牌四"
+        },
+        {
+          "goods_id": 7,
+          "goods_thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565118592736&di=3d0311c179a204de22c98a439706a724&imgtype=0&src=http%3A%2F%2Fimg2.99114.com%2Fgroup1%2FM00%2F61%2FC3%2FwKgGSFnDdF2AIk2lAAFUhrLNs8A450.jpg",
+          "goods_name": "品牌五"
+        },
+        {
+          "goods_id": 8,
+          "goods_thumb": "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1565118592736&di=3d0311c179a204de22c98a439706a724&imgtype=0&src=http%3A%2F%2Fimg2.99114.com%2Fgroup1%2FM00%2F61%2FC3%2FwKgGSFnDdF2AIk2lAAFUhrLNs8A450.jpg",
+          "goods_name": "品牌六"
+        }
+      ]
+    }
+  ]
+}

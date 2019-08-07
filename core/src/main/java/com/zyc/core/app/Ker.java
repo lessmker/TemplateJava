@@ -4,17 +4,15 @@ import android.app.Application;
 import android.content.Context;
 import android.os.Handler;
 
-import java.util.HashMap;
-
 /**
  * @Author: zyc
  * @CreateDate: 2019/8/3 16:43
  * @Description: 对外的工具类
  */
-public final class App {
+public final class Ker {
     public static Configurator init(Context context) {
         Configurator.getInstance()
-                .getLatteConfigs()
+                .getKerConfigs()
                 .put(ConfigKeys.APPLICATION_CONTEXT, context.getApplicationContext());
         return Configurator.getInstance();
     }

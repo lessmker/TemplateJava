@@ -9,7 +9,7 @@ import android.content.Intent;
  * @CreateDate: 2019/8/6 14:43
  * @Description:
  */
-public class AppRegisterTemplate extends BroadcastReceiver {
+public class KerRegisterTemplate extends BroadcastReceiver {
 
 
     @Override

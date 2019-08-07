@@ -8,7 +8,7 @@ import com.zyc.core.net.callback.IRequest;
 import com.zyc.core.net.callback.ISuccess;
 import com.zyc.core.net.callback.RequestCallbacks;
 import com.zyc.core.net.download.DownloadHandler;
-import com.zyc.core.ui.loader.AppLoader;
+import com.zyc.core.ui.loader.KerLoader;
 import com.zyc.core.ui.loader.LoaderStyle;
 
 import java.io.File;
@@ -72,7 +72,7 @@ public class RestClient {
         }
 
         if (LOADER_STYLE != null) {
-            AppLoader.showLoading(CONTEEXT, LOADER_STYLE);
+            KerLoader.showLoading(CONTEEXT, LOADER_STYLE);
         }
 
         switch (method) {

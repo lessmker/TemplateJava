@@ -11,30 +11,21 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-import com.zyc.core.app.ConfigKeys;
-import com.zyc.core.delegates.AppDelegate;
+import com.zyc.core.delegates.KerDelegate;
 import com.zyc.core.net.RestClient;
-import com.zyc.core.net.RestCreator;
 import com.zyc.core.net.callback.IError;
 import com.zyc.core.net.callback.IFailure;
 import com.zyc.core.net.callback.ISuccess;
-import com.zyc.core.net.rx.RxRestClient;
 import com.zyc.templatejava.R;
 
 import java.util.WeakHashMap;
-
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 
 /**
  * @Author: zyc
  * @CreateDate: 2019/8/3 21:13
  * @Description: 主测试Delegate
  */
-public class MainDelegate extends AppDelegate {
+public class MainDelegate extends KerDelegate {
 
     final WeakHashMap<String, Object> params = new WeakHashMap<>();
 

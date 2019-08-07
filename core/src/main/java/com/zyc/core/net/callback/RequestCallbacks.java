@@ -2,7 +2,7 @@ package com.zyc.core.net.callback;
 
 import android.os.Handler;
 
-import com.zyc.core.ui.loader.AppLoader;
+import com.zyc.core.ui.loader.KerLoader;
 import com.zyc.core.ui.loader.LoaderStyle;
 
 
@@ -66,7 +66,7 @@ public class RequestCallbacks implements Callback<String> {
             HANDLER.postDelayed(new Runnable() {//延时1s
                 @Override
                 public void run() {
-                    AppLoader.stopLoading();
+                    KerLoader.stopLoading();
                 }
             }, 1000);
         }

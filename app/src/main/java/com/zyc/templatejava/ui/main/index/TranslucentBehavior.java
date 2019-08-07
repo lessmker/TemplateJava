@@ -8,8 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.widget.Toolbar;
 import androidx.coordinatorlayout.widget.CoordinatorLayout;
 
-import com.zyc.core.app.App;
-import com.zyc.core.ui.recycler.RgbValue;
+import com.zyc.core.app.Ker;
 import com.zyc.templatejava.R;
 
 /**
@@ -54,7 +53,7 @@ public class TranslucentBehavior extends CoordinatorLayout.Behavior<Toolbar> {
             , int dyUnconsumed
             , int type) {
         final int startOffset = 0;
-        final Context context = App.getApplicationContext();
+        final Context context = Ker.getApplicationContext();
         final int endOffset = context.getResources().getDimensionPixelOffset(R.dimen.header_height) + MORE;
         mOffset += dyConsumed;
         if (mOffset <= startOffset) {

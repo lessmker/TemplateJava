@@ -6,7 +6,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.zyc.core.app.App;
+import com.zyc.core.app.Ker;
 import com.zyc.core.net.RestClient;
 import com.zyc.core.net.callback.ISuccess;
 import com.zyc.core.ui.recycler.DataConverter;
@@ -43,7 +43,7 @@ public class RefreshHandler implements
 
     private void refresh() {
         REFRESH_LAYOUT.setRefreshing(true);
-        App.getHandler().postDelayed(new Runnable() {
+        Ker.getHandler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 //进行一些网络请求

@@ -1,6 +1,6 @@
 package com.zyc.core.wechat.templates;
 
-import com.zyc.core.wechat.AppWeChat;
+import com.zyc.core.wechat.KerWeChat;
 import com.zyc.core.wechat.BaseWXEntryActivity;
 
 /**
@@ -19,6 +19,6 @@ public class WXEntryTemplate extends BaseWXEntryActivity {
 
     @Override
     protected void onSignInSuccess(String userInfo) {
-        AppWeChat.getInstance().getSignInCallback().onSignInSuccess(userInfo);
+        KerWeChat.getInstance().getSignInCallback().onSignInSuccess(userInfo);
     }
 }

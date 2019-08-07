@@ -9,7 +9,7 @@ import com.zyc.core.net.RestClient;
 import com.zyc.core.net.callback.IError;
 import com.zyc.core.net.callback.IFailure;
 import com.zyc.core.net.callback.ISuccess;
-import com.zyc.core.utils.AppLogger;
+import com.zyc.core.utils.KerLogger;
 
 /**
  * @Author: zyc
@@ -34,14 +34,14 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
         final StringBuilder authUrl = new StringBuilder();
         authUrl
                 .append("https://api.weixin.qq.com/sns/oauth2/access_token?appid=")
-                .append(AppWeChat.APP_ID)
+                .append(KerWeChat.APP_ID)
                 .append("&secret=")
-                .append(AppWeChat.APP_SECRET)
+                .append(KerWeChat.APP_SECRET)
                 .append("&code=")
                 .append(code)
                 .append("&grant_type=authorization_code");
 
-        AppLogger.d("authUrl", authUrl.toString());
+        KerLogger.d("authUrl", authUrl.toString());
         getAuth(authUrl.toString());
     }
 
@@ -65,7 +65,7 @@ public abstract class BaseWXEntryActivity extends BaseWXActivity {
                                 .append(openId)
                                 .append("&lang=")
                                 .append("zh_CN");
-                        AppLogger.d("userInfoUrl", userInfoUrl.toString());
+                        KerLogger.d("userInfoUrl", userInfoUrl.toString());
                         getUserInfo(userInfoUrl.toString());
 
                     }

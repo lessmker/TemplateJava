@@ -4,9 +4,7 @@ import android.view.View;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
-import com.zyc.core.delegates.AppDelegate;
-import com.zyc.core.ui.recycler.MultipleFields;
-import com.zyc.core.ui.recycler.MultipleItemEntity;
+import com.zyc.core.delegates.KerDelegate;
 import com.zyc.templatejava.ui.main.detail.GoodsDetailDelegate;
 
 /**
@@ -15,13 +13,13 @@ import com.zyc.templatejava.ui.main.detail.GoodsDetailDelegate;
  * @Description:
  */
 public class IndexItemClickListener extends SimpleClickListener {
-    private final AppDelegate DELEGATE;
+    private final KerDelegate DELEGATE;
 
-    private IndexItemClickListener(AppDelegate delegate) {
+    private IndexItemClickListener(KerDelegate delegate) {
         this.DELEGATE = delegate;
     }
 
-    public static SimpleClickListener create(AppDelegate delegate) {
+    public static SimpleClickListener create(KerDelegate delegate) {
         return new IndexItemClickListener(delegate);
     }
 

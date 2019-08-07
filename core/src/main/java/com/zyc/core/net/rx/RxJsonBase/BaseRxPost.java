@@ -4,10 +4,9 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.zyc.core.app.ConfigKeys;
 import com.zyc.core.net.RestCreator;
 import com.zyc.core.net.rx.RxRestClient;
-import com.zyc.core.utils.AppLogger;
+import com.zyc.core.utils.KerLogger;
 
 import java.io.FileNotFoundException;
 import java.util.Objects;
@@ -85,7 +84,7 @@ public abstract class BaseRxPost {
                             public void onNext(@io.reactivex.annotations.NonNull String s) {
                                 REVJSON = s;
                                 REV_SUCCESS = true;
-                                AppLogger.json("接收数据", s);
+                                KerLogger.json("接收数据", s);
                                 successRun();
                             }
 
@@ -121,7 +120,7 @@ public abstract class BaseRxPost {
                             public void onNext(@io.reactivex.annotations.NonNull String s) {
                                 REVJSON = s;
                                 REV_SUCCESS = true;
-                                AppLogger.json("接收数据", s);
+                                KerLogger.json("接收数据", s);
                                 successRun();
                             }
 

@@ -9,16 +9,15 @@ import androidx.appcompat.widget.AppCompatTextView;
 
 import com.zyc.core.app.AccountManager;
 import com.zyc.core.app.IUserChecker;
-import com.zyc.core.delegates.AppDelegate;
+import com.zyc.core.delegates.KerDelegate;
 import com.zyc.core.ui.launcher.ILauncherListener;
 import com.zyc.core.ui.launcher.OnLauncherFinishTag;
 import com.zyc.core.ui.launcher.ScrollLauncherTag;
-import com.zyc.core.utils.AppPreference;
+import com.zyc.core.utils.KerPreference;
 import com.zyc.core.utils.timer.BaseTimerTask;
 import com.zyc.core.utils.timer.ITimerListener;
 import com.zyc.templatejava.R;
 import com.zyc.templatejava.R2;
-import com.zyc.templatejava.ui.sign.SignUpDelegate;
 
 import java.text.MessageFormat;
 import java.util.Timer;
@@ -31,7 +30,7 @@ import butterknife.OnClick;
  * @CreateDate: 2019/8/4 18:18
  * @Description: 启动图
  */
-public class LauncherDelegate extends AppDelegate implements ITimerListener {
+public class LauncherDelegate extends KerDelegate implements ITimerListener {
 
     @BindView(R2.id.tv_launcher_timer)
     AppCompatTextView mTvTimer = null;
@@ -59,7 +58,7 @@ public class LauncherDelegate extends AppDelegate implements ITimerListener {
     //判断是否展示滑动演示页
     private void checkIsShowScroll() {
         if (mILauncherListener != null) {
-            if (!AppPreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
+            if (!KerPreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())) {
 //            start(new LauncherScrollDelegate(), SINGLETASK);
                 mILauncherListener.onLauncherFinish(OnLauncherFinishTag.LANUNCHERON);
             } else {//检查用户是否已经登录APP

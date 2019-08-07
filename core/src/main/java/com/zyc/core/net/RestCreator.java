@@ -1,12 +1,10 @@
 package com.zyc.core.net;
 
-import com.wang.avi.Indicator;
-import com.zyc.core.app.App;
+import com.zyc.core.app.Ker;
 import com.zyc.core.app.ConfigKeys;
 import com.zyc.core.net.rx.RxRestService;
 
 import java.util.ArrayList;
-import java.util.WeakHashMap;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
@@ -38,7 +36,7 @@ public class RestCreator {
      * 构建全局Retrofit客户端
      */
     private static final class RetrofitHolder {
-        private static final String BASE_URL = App.getConfiguration(ConfigKeys.API_HOST);
+        private static final String BASE_URL = Ker.getConfiguration(ConfigKeys.API_HOST);
         private static final Retrofit RETROFIT_CLIENT = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(OkHttpHolder.OK_HTTP_CLIENT)
@@ -53,7 +51,7 @@ public class RestCreator {
     private static final class OkHttpHolder {//对okhttp的惰性初始化
         private static final int TIME_OUT = 60;//添加延时
         private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
-        private static final ArrayList<Interceptor> INTERCEPTORS = App.getConfiguration(ConfigKeys.INTERCEPTOR);
+        private static final ArrayList<Interceptor> INTERCEPTORS = Ker.getConfiguration(ConfigKeys.INTERCEPTOR);
 
         private static OkHttpClient.Builder addInterceptor() {
             if ((INTERCEPTORS != null) && (!INTERCEPTORS.isEmpty())) {

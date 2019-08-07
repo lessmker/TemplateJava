@@ -4,8 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <include
+        layout="@layout/base_tool_bar_tv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="发现" />
+        android:layout_height="?attr/actionBarSize"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true" />
+
+    <FrameLayout
+        android:id="@+id/web_discovery_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
 </androidx.appcompat.widget.LinearLayoutCompat>

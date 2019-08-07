@@ -1,9 +1,5 @@
 package com.zyc.templatejava.wxapi;
 
-import android.app.Activity;
-import android.os.Bundle;
-
-import com.zyc.core.app.App;
 import com.zyc.core.wechat.templates.WXEntryTemplate;
 
 /**

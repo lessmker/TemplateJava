@@ -3,10 +3,12 @@ package com.zyc.core.app;
 import android.app.Activity;
 import android.os.Handler;
 
+import androidx.annotation.NonNull;
+
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
-import com.orhanobut.logger.AndroidLogAdapter;
-import com.orhanobut.logger.Logger;
+import com.zyc.core.delegates.web.event.Event;
+import com.zyc.core.delegates.web.event.EventManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,23 +21,23 @@ import okhttp3.Interceptor;
  * @Description: 配置文件的存储以及获取
  */
 public final class Configurator {
-    private static final HashMap<Object, Object> LATTE_CONFIGS = new HashMap<>();
+    private static final HashMap<Object, Object> KER_CONFIGS = new HashMap<>();
     private static final Handler HANDLER = new Handler();
     private static final ArrayList<IconFontDescriptor> ICONS = new ArrayList<>();
 
     private static final ArrayList<Interceptor> INTERCEPTORS = new ArrayList<>();
 
     private Configurator() {
-        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, false);
-        LATTE_CONFIGS.put(ConfigKeys.HANDLER, HANDLER);
+        KER_CONFIGS.put(ConfigKeys.CONFIG_READY, false);
+        KER_CONFIGS.put(ConfigKeys.HANDLER, HANDLER);
     }
 
     static Configurator getInstance() {
         return Holder.INSTANCE;
     }
 
-    final HashMap<Object, Object> getLatteConfigs() {
-        return LATTE_CONFIGS;
+    final HashMap<Object, Object> getKerConfigs() {
+        return KER_CONFIGS;
     }
 
     private static class Holder {
@@ -44,18 +46,16 @@ public final class Configurator {
 
     public final void configure() {
         initIcons();
-        //Logger的初始化
-        Logger.addLogAdapter(new AndroidLogAdapter());
-        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY, true);
+        KER_CONFIGS.put(ConfigKeys.CONFIG_READY, true);
     }
 
     public final Configurator withApiHost(String host) {
-        LATTE_CONFIGS.put(ConfigKeys.API_HOST, host);
+        KER_CONFIGS.put(ConfigKeys.API_HOST, host);
         return this;
     }
 
     public final Configurator withLoaderDelayed(long delayed) {
-        LATTE_CONFIGS.put(ConfigKeys.LOADER_DELAYED, delayed);
+        KER_CONFIGS.put(ConfigKeys.LOADER_DELAYED, delayed);
         return this;
     }
 
@@ -75,39 +75,50 @@ public final class Configurator {
 
     public final Configurator withInterceptor(Interceptor interceptor) {
         INTERCEPTORS.add(interceptor);
-        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
+        KER_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
         return this;
     }
 
     public final Configurator withInterceptors(ArrayList<Interceptor> interceptors) {
         INTERCEPTORS.addAll(interceptors);
-        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
+        KER_CONFIGS.put(ConfigKeys.INTERCEPTOR, INTERCEPTORS);
         return this;
     }
 
     public final Configurator withWeChatAppId(String appId) {
-        LATTE_CONFIGS.put(ConfigKeys.WE_CHAT_APP_ID, appId);
+        KER_CONFIGS.put(ConfigKeys.WE_CHAT_APP_ID, appId);
         return this;
     }
 
     public final Configurator withWeChatAppSecret(String appSecret) {
-        LATTE_CONFIGS.put(ConfigKeys.WE_CHAT_APP_SECRET, appSecret);
+        KER_CONFIGS.put(ConfigKeys.WE_CHAT_APP_SECRET, appSecret);
         return this;
     }
 
     public final Configurator withActivity(Activity activity) {
-        LATTE_CONFIGS.put(ConfigKeys.ACTIVITY, activity);
+        KER_CONFIGS.put(ConfigKeys.ACTIVITY, activity);
+        return this;
+    }
+
+    public Configurator withJavascriptInterface(@NonNull String name) {
+        KER_CONFIGS.put(ConfigKeys.JAVASCRIPT_INTERFACE, name);
+        return this;
+    }
+
+    public Configurator withWebEvent(@NonNull String name, @NonNull Event event) {
+        final EventManager manager = EventManager.getInstance();
+        manager.addEvent(name, event);
         return this;
     }
 
     //浏览器加载的HOST
     public Configurator withWebHost(String host) {
-        LATTE_CONFIGS.put(ConfigKeys.WEB_HOST, host);
+        KER_CONFIGS.put(ConfigKeys.WEB_HOST, host);
         return this;
     }
 
     private void checkConfiguration() {
-        final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigKeys.CONFIG_READY);
+        final boolean isReady = (boolean) KER_CONFIGS.get(ConfigKeys.CONFIG_READY);
         if (!isReady) {
             throw new RuntimeException("Configuration is not ready,call configure");
         }
@@ -116,10 +127,10 @@ public final class Configurator {
     @SuppressWarnings("unchecked")
     final <T> T getConfiguration(Object key) {
         checkConfiguration();
-        final Object value = LATTE_CONFIGS.get(key);
+        final Object value = KER_CONFIGS.get(key);
         if (value == null) {
             throw new NullPointerException(key.toString() + " IS NULL");
         }
-        return (T) LATTE_CONFIGS.get(key);
+        return (T) KER_CONFIGS.get(key);
     }
 }

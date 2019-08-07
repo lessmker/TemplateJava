@@ -16,7 +16,7 @@ import android.provider.MediaStore;
 import android.webkit.MimeTypeMap;
 import android.widget.TextView;
 
-import com.zyc.core.app.App;
+import com.zyc.core.app.Ker;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
@@ -39,7 +39,7 @@ import java.util.Locale;
 public class FileUtil {
 
     //Context加载
-    private static Application mContext = App.getApplicationContext();
+    private static Application mContext = Ker.getApplicationContext();
 
     //格式化的模板
     private static final String TIME_FORMAT = "_yyyyMMdd_HHmmss";

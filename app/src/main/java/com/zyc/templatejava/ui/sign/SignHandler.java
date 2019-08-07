@@ -1,8 +1,6 @@
 package com.zyc.templatejava.ui.sign;
 
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
 import com.zyc.core.app.AccountManager;
 import com.zyc.templatejava.database.DataBaseManager;
 import com.zyc.templatejava.database.UserProfile;

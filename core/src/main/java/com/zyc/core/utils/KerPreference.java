@@ -5,14 +5,14 @@ import android.preference.PreferenceManager;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import com.zyc.core.app.App;
+import com.zyc.core.app.Ker;
 
 /**
  * @Author: zyc
  * @CreateDate: 2019/8/4 18:14
  * @Description:
  */
-public class AppPreference {
+public class KerPreference {
     /**
      * 提示:
      * Activity.getPreferences(int mode)生成 Activity名.xml 用于Activity内部存储
@@ -20,7 +20,7 @@ public class AppPreference {
      * Context.getSharedPreferences(String name,int mode)生成name.xml
      */
     private static final SharedPreferences PREFERENCES =
-            PreferenceManager.getDefaultSharedPreferences(App.getApplicationContext());
+            PreferenceManager.getDefaultSharedPreferences(Ker.getApplicationContext());
     private static final String APP_PREFERENCES_KEY = "profile";
 
     private static SharedPreferences getAppPreference() {

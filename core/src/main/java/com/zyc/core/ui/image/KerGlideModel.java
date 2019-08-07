@@ -9,5 +9,5 @@ import com.bumptech.glide.module.AppGlideModule;
  * @Description:
  */
 @GlideModule
-public class AppGlideModel extends AppGlideModule {
+public class KerGlideModel extends AppGlideModule {
 }

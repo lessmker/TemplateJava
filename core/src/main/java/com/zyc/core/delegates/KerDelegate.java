@@ -5,10 +5,10 @@ package com.zyc.core.delegates;
  * @CreateDate: 2019/8/3 20:58
  * @Description: 正式的Delegate
  */
-public abstract class AppDelegate extends PermissionCheckerDelegate {
+public abstract class KerDelegate extends PermissionCheckerDelegate {
 
     @SuppressWarnings("unchecked")
-    public <T extends AppDelegate> T getParentDelegate() {
+    public <T extends KerDelegate> T getParentDelegate() {
         return (T) getParentFragment();
     }
 }

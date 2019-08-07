@@ -8,7 +8,7 @@ import com.orhanobut.logger.Logger;
  * @CreateDate: 2019/8/4 22:23
  * @Description: logger的封装
  */
-public final class AppLogger {
+public final class KerLogger {
     private static final int VERBOSE = 1;
     private static final int DEBUG = 2;
     private static final int INFO = 3;

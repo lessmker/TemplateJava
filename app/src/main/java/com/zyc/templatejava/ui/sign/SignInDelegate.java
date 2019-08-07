@@ -2,14 +2,13 @@ package com.zyc.templatejava.ui.sign;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Patterns;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 
-import com.zyc.core.delegates.AppDelegate;
-import com.zyc.core.wechat.AppWeChat;
+import com.zyc.core.delegates.KerDelegate;
+import com.zyc.core.wechat.KerWeChat;
 import com.zyc.core.wechat.callbacks.IWeChatSignInCallback;
 import com.zyc.templatejava.R;
 import com.zyc.templatejava.R2;
@@ -22,7 +21,7 @@ import butterknife.OnClick;
  * @CreateDate: 2019/8/4 21:51
  * @Description:
  */
-public class SignInDelegate extends AppDelegate {
+public class SignInDelegate extends KerDelegate {
 
     @BindView(R2.id.edit_sign_in_phone)
     AppCompatEditText mPhone = null;
@@ -59,7 +58,7 @@ public class SignInDelegate extends AppDelegate {
 
     @OnClick(R2.id.icon_sign_in_wechat)
     void onClickSignInWeChat() {//微信登录
-        AppWeChat.getInstance().onSignSuccess(new IWeChatSignInCallback() {
+        KerWeChat.getInstance().onSignSuccess(new IWeChatSignInCallback() {
             @Override
             public void onSignInSuccess(String userInfo) {
 

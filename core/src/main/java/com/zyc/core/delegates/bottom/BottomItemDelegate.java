@@ -5,15 +5,15 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.zyc.core.R;
-import com.zyc.core.app.App;
-import com.zyc.core.delegates.AppDelegate;
+import com.zyc.core.app.Ker;
+import com.zyc.core.delegates.KerDelegate;
 
 /**
  * @Author: zyc
  * @CreateDate: 2019/8/6 16:14
  * @Description:
  */
-public abstract class BottomItemDelegate extends AppDelegate implements View.OnKeyListener {
+public abstract class BottomItemDelegate extends KerDelegate implements View.OnKeyListener {
     // 再点一次退出程序时间设置
     private static final long WAIT_TIME = 2000L;
     private long TOUCH_TIME = 0;
@@ -27,7 +27,7 @@ public abstract class BottomItemDelegate extends AppDelegate implements View.OnK
             }
         } else {
             TOUCH_TIME = System.currentTimeMillis();
-            Toast.makeText(_mActivity, "双击退出" + App.getApplicationContext().getString(R.string.app_name), Toast.LENGTH_SHORT).show();
+            Toast.makeText(_mActivity, "双击退出" + Ker.getApplicationContext().getString(R.string.app_name), Toast.LENGTH_SHORT).show();
         }
         return true;
     }

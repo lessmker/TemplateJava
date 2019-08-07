@@ -4,8 +4,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatTextView
+    <include
+        layout="@layout/base_tool_bar_tv"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:clipToPadding="true"
+        android:fitsSystemWindows="true"/>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="分类" />
+        android:background="@color/app_background"
+        android:baselineAligned="true"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/vertical_list_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <FrameLayout
+            android:id="@+id/sort_content_container"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_weight="2.5" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
 </androidx.appcompat.widget.LinearLayoutCompat>

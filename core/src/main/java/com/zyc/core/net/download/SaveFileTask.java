@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 
-import com.zyc.core.app.App;
+import com.zyc.core.app.Ker;
 import com.zyc.core.net.callback.IRequest;
 import com.zyc.core.net.callback.ISuccess;
 import com.zyc.core.utils.FileUtil;
@@ -66,7 +66,7 @@ public class SaveFileTask extends AsyncTask<Object, Void, File> {
             install.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             install.setAction(Intent.ACTION_VIEW);
             install.setDataAndType(Uri.fromFile(file), "application/vnd.android.package-archive");
-            App.getApplicationContext().startActivity(install);
+            Ker.getApplicationContext().startActivity(install);
         }
     }
 }
